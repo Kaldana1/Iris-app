@@ -6,7 +6,6 @@ st.subheader(" Mon jeu de donne iris")
 st.button("Cliquez ici")
 st.slider("Longueur du Petal",0.0,5.0)
 st.slider("Largeur du Petal",0.0,5.0)
-st.slider("Largeur du Petal",0.0,5.0)
 st.slider("Longueur du Metal",0.0,5.0)
 st.slider("Largeur du Metal",0.0,5.0)
 
