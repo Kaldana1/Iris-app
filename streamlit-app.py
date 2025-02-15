@@ -10,14 +10,7 @@ st.slider("Largeur du Metal",0.0,5.0)
 st.button("Cliquez ici")
 st.sidebar.title("Menu latéral")
 st.sidebar.write("Bienvenu sur iris")
-# Ajouter un curseur (slider)
-age = st.sidebar.slider("Sélectionnez votre âge", 0, 100, 25)
-# Afficher la valeur sélectionnée dans la page principale
-st.write(f"Votre âge sélectionné est : {age}")
-# Ajouter un bouton
-if st.sidebar.button("Cliquez ici"):
-    st.write("Bouton cliqué !")
-# Ajouter une case à cocher
+
 agree = st.sidebar.checkbox("J'accepte les conditions")
 if agree:
     st.write("Merci d'avoir accepté !")
