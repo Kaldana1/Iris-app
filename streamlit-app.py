@@ -39,4 +39,4 @@ prediction = model.predict(features)
 # Affichage du résultat
 st.subheader("Résultat de la Prédiction 🏷️")
 st.write(f"**La fleur prédite est : {prediction[0]}**")
-📌 Explication :
+ 
