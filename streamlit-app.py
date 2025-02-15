@@ -2,6 +2,9 @@ import streamlit as st
 import pickle
 import numpy as np
 
+with open("Application_Model_Classifier_Iris.pkl", "rb") as file:
+    knn = pickle.load(file)
+    
 # Charger le modèle .pkl
 @st.cache_data
 def load_model():
