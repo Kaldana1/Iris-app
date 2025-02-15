@@ -1,3 +1,10 @@
+import os
+import streamlit as st
+
+st.write(" Dossier actuel :", os.getcwd())  # Affiche le dossier où tourne Streamlit
+st.write(" Fichier en cours d'exécution :", __file__)  # Affiche le chemin du script
+
+
 import streamlit as st
 import pickle
 import numpy as np
