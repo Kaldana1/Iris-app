@@ -8,25 +8,35 @@ st.slider("Largeur du Petal",0.0,5.0)
 st.slider("Longueur du Metal",0.0,5.0)
 st.slider("Largeur du Metal",0.0,5.0)
 st.button("Cliquez ici")
-st.sidebar.title("Menu latéral")
-st.sidebar.write("Bienvenu sur iris")
+import pickle
+import numpy as np
 
-agree = st.sidebar.checkbox("J'accepte les conditions")
-if agree:
-    st.write("Merci d'avoir accepté !")
-# Ajouter un menu déroulant
-option = st.sidebar.selectbox("Choisissez une option :", ["Option 1", "Option 2", "Option 3"])
-st.write(f"Vous avez choisi : {option}")
-from PIL import Image
+# Charger le modèle .pkl
+@st.cache_data
+def load_model():
+    with open("Application_Model_Classifier_Iris.pkl", "rb") as file:
+        model = pickle.load(file)
+    return model
 
-# Charger une image
-image = Image.open("image.jpg")  
-# Afficher l'image dans la sidebar
-st.sidebar.image(image, caption="Image de la sidebar", use_column_width=True)
+model = load_model()
 
-# Ajouter un texte formaté
-st.sidebar.markdown("### **Bienvenue !**")
-st.sidebar.markdown("Découvrez les fonctionnalités de Streamlit 🚀")
-with st.sidebar.expander("Plus d'informations"):
-    st.write("Voici des informations supplémentaires...")
-    st.image("info.png")  
+# Interface Streamlit
+st.title("🌸 Prédiction de la Fleur d'Iris")
+
+# Ajouter une sidebar
+st.sidebar.header("📊 Paramètres d'entrée")
+
+# Création des entrées utilisateur
+sepal_length = st.sidebar.slider("Longueur du sépal", 4.0, 8.0, 5.0)
+sepal_width = st.sidebar.slider("Largeur du sépal", 2.0, 4.5, 3.0)
+petal_length = st.sidebar.slider("Longueur du pétale", 1.0, 7.0, 4.0)
+petal_width = st.sidebar.slider("Largeur du pétale", 0.1, 2.5, 1.3)
+
+# Prédiction
+features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
+prediction = model.predict(features)
+
+# Affichage du résultat
+st.subheader("Résultat de la Prédiction 🏷️")
+st.write(f"**La fleur prédite est : {prediction[0]}**")
+📌 Explication :
