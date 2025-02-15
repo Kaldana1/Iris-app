@@ -15,10 +15,10 @@ import numpy as np
 @st.cache_data
 def load_model():
     with open("Application_Model_Classifier_Iris.pkl", "rb") as file:
-        model = pickle.load(file)
+        knn = pickle.load(file)
     return model
 
-model = load_model()
+knn = load_model()
 
 # Interface Streamlit
 st.title("🌸 Prédiction de la Fleur d'Iris")
@@ -34,7 +34,7 @@ petal_width = st.sidebar.slider("Largeur du pétale", 0.1, 2.5, 1.3)
 
 # Prédiction
 features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
-prediction = model.predict(features)
+prediction = knn.predict(features)
 
 # Affichage du résultat
 st.subheader("Résultat de la Prédiction 🏷️")
