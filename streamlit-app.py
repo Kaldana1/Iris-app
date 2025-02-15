@@ -6,10 +6,10 @@ import numpy as np
 @st.cache_data
 def load_model():
     with open("Application_Model_Classifier_Iris.pkl", "rb") as file:
-        model = pickle.load(file)
-    return model
+        knn = pickle.load(file)
+    return knn
 
-model = load_model()
+knn = load_model()
 
 # Interface Streamlit
 st.title("🌸 Prédiction de la Fleur d'Iris")
