@@ -10,3 +10,30 @@ st.slider("Largeur du Metal",0.0,5.0)
 st.button("Cliquez ici")
 st.sidebar.title("Menu latéral")
 st.sidebar.write("Bienvenu sur iris")
+# Ajouter un curseur (slider)
+age = st.sidebar.slider("Sélectionnez votre âge", 0, 100, 25)
+# Afficher la valeur sélectionnée dans la page principale
+st.write(f"Votre âge sélectionné est : {age}")
+# Ajouter un bouton
+if st.sidebar.button("Cliquez ici"):
+    st.write("Bouton cliqué !")
+# Ajouter une case à cocher
+agree = st.sidebar.checkbox("J'accepte les conditions")
+if agree:
+    st.write("Merci d'avoir accepté !")
+# Ajouter un menu déroulant
+option = st.sidebar.selectbox("Choisissez une option :", ["Option 1", "Option 2", "Option 3"])
+st.write(f"Vous avez choisi : {option}")
+from PIL import Image
+
+# Charger une image
+image = Image.open("image.jpg")  
+# Afficher l'image dans la sidebar
+st.sidebar.image(image, caption="Image de la sidebar", use_column_width=True)
+
+# Ajouter un texte formaté
+st.sidebar.markdown("### **Bienvenue !**")
+st.sidebar.markdown("Découvrez les fonctionnalités de Streamlit 🚀")
+with st.sidebar.expander("Plus d'informations"):
+    st.write("Voici des informations supplémentaires...")
+    st.image("info.png")  
