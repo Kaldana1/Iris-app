@@ -4,7 +4,7 @@ import numpy as np
 import pandas as pd
 
 # Charger le modèle à partir du fichier .pkl
-with open('lenovo/Application_Model_Classifier_Iris.pkl', 'rb') as file:
+with open('C:\\Users\\LENOVO\\lenvo\\Application_Model_Classifier_Iris.pkl', 'rb') as file:
     model = pickle.load(file)
 
 # Définir les colonnes de l'iris dataset
