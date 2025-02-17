@@ -8,3 +8,35 @@ st.slider("Longueur du Metal",0.0,5.0)
 st.slider("Largeur du Metal",0.0,5.0)
 st.button("Cliquez ici")
 
+import streamlit as st
+import pickle
+import numpy as np
+
+# Charger le modèle .pkl
+@st.cache_data
+def load_model():
+    with open("Application_Model_Classifier_Iris.pkl", "rb") as file:
+        model = pickle.load(file)
+    return model
+
+model = load_model()
+
+# Interface Streamlit
+st.title("🌸 Prédiction de la Fleur d'Iris")
+
+# Ajouter une sidebar
+st.sidebar.header("📊 Paramètres d'entrée")
+
+# Création des entrées utilisateur
+sepal_length = st.sidebar.slider("Longueur du sépal", 4.0, 8.0, 5.0)
+sepal_width = st.sidebar.slider("Largeur du sépal", 2.0, 4.5, 3.0)
+petal_length = st.sidebar.slider("Longueur du pétale", 1.0, 7.0, 4.0)
+petal_width = st.sidebar.slider("Largeur du pétale", 0.1, 2.5, 1.3)
+
+# Prédiction
+features = np.array([[sepal_length, sepal_width, petal_length, petal_width]])
+prediction = model.predict(features)
+
+# Affichage du résultat
+st.subheader("Résultat de la Prédiction 🏷️")
+st.write(f"**La fleur prédite est : {prediction[0]}**")
